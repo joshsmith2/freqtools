@@ -97,3 +97,24 @@ def freq_to_note(f):
 
 def freq_to_valid_freq(f):
     return mils_to_freq(freq_to_mils(f));
+
+def freq_at_octave(freq_at_zero, target_octave):
+    """Given the frequency at octave 0, returns the frequency at 
+    target_octave.
+    """
+    target_frequency = 0
+
+    if target_octave<0:
+        b = (target_octave*-2)/2
+    else:
+        b = target_octave
+
+
+    for a in range(0,b):
+        if target_octave>0:
+           target_frequency *=2
+        else:
+           target_frequency /=2
+    target_frequency = freq_at_zero
+    return target_frequency;
+
